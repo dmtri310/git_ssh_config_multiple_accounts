@@ -41,7 +41,7 @@ Host github.com
 Host github.com
         HostName github.com-user2
         User user2
-        IdentityFile ~/.ssh/id_ed25519_user2
+        IdentityFile ~/.ssh/id_ed25519.user2
         IdentitiesOnly yes
         AddKeysToAgent yes
 

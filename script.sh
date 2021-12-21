@@ -7,22 +7,22 @@ read -p "Enter 1st user email: " user1_email
 read -p "Enter 2nd user name: " user2_name
 read -p "Enter 2nd user email: " user2_email
 
-mkdir -p "~/projects/${user1_name}"
-mkdir -p "~/projects/${user2_name}"
+mkdir -p "$HOME/projects/$user1_name"
+mkdir -p "$HOME/projects/$user2_name"
 
 # Generate SSH keys
-ssh-keygen -t ed25519 -C "${user1_email}" -N "" -f "~/.ssh/id_ed25519"
-ssh-keygen -t ed25519 -C "${user2_email}" -N "" -f "~/.ssh/id_ed25519.${user2_name}"
+ssh-keygen -t ed25519 -C $user1_email -N "" -f "$HOME/.ssh/id_ed25519"
+ssh-keygen -t ed25519 -C $user2_email -N "" -f "$HOME/.ssh/id_ed25519.$user2_name"
 
 # Start ssh-agent
 eval "$(ssh-agent -s)"
 
 # Add SSH private keys to ssh-agent
 ssh-add ~/.ssh/id_ed25519
-ssh-add "~/.ssh/id_ed25519.${user2_name}"
+ssh-add "$HOME/.ssh/id_ed25519.$user2_name"
 
 # Create .gitconfig for second user
-user2_gitconfig="~/${user2_name}.gitconfig"
+user2_gitconfig="$HOME/$user2_name.gitconfig"
 touch $user2_gitconfig
 cat > $user2_gitconfig <<EOL
 [user]
@@ -69,4 +69,4 @@ echo "Public key for 1st user:"
 cat ~/.ssh/id_ed25519.pub
 
 echo "Public key for 2nd user:"
-cat "~/.ssh/id_ed25519.${user2_name}.pub"
+cat "$HOME/.ssh/id_ed25519.${user2_name}.pub"

@@ -56,8 +56,8 @@ ${TAB}IdentitiesOnly yes
 ${TAB}AddKeysToAgent yes
 
 # ${user2_name}
-Host github.com
-${TAB}HostName github.com-${user2_name}
+Host github.com-${user2_name}
+${TAB}HostName github.com
 ${TAB}User ${user2_name}
 ${TAB}IdentityFile ~/.ssh/id_ed25519.${user2_name}
 ${TAB}IdentitiesOnly yes

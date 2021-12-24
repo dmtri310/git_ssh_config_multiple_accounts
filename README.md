@@ -38,8 +38,8 @@ Host github.com
         AddKeysToAgent yes
 
 # User 2
-Host github.com
-        HostName github.com-user2
+Host github.com-user2
+        HostName github.com
         User user2
         IdentityFile ~/.ssh/id_ed25519.user2
         IdentitiesOnly yes

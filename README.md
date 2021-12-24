@@ -1,5 +1,7 @@
 # Git & SSH configuration for multiple github accounts
 
+#### WARNING: Make sure to keep backups of SSH config and global .gitconfig files
+
 Generate SSH keys
 
 ```

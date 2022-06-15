@@ -5,25 +5,27 @@
 Generate SSH keys
 
 ```
-ssh-keygen -t ed25519 -C "my-email@example.com" #save as 'id_ed25519' (default)
-ssh-keygen -t ed25519 -C "my-second-email@example.com" #save as 'id_ed25519.user2'
+ssh-keygen -t ed25519 -C "my-email@example.com"
+// save as 'user1-github'
+ssh-keygen -t ed25519 -C "my-second-email@example.com"
+// save as 'user2-github'
 ```
 
 Start SSH agent and add private keys
 
 ```
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-ssh-add ~/.ssh/id_ed25519.user2
+ssh-add ~/.ssh/user1-github
+ssh-add ~/.ssh/user2-github
 ```
 
 Add public key for each account on github
 
 ```
 # Copy paste public key
-cat ~/.ssh/id_ed25519.pub
+cat ~/.ssh/user1-github
 # For second github account
-cat ~/.ssh/id_ed25519.user2.pub
+cat ~/.ssh/user2-github
 ```
 
 Edit SSH config file
@@ -35,7 +37,7 @@ Edit SSH config file
 Host github.com
         HostName github.com
         User user1
-        IdentityFile ~/.ssh/id_ed25519
+        IdentityFile ~/.ssh/user1-github
         IdentitiesOnly yes
         AddKeysToAgent yes
 
@@ -43,7 +45,7 @@ Host github.com
 Host github.com-user2
         HostName github.com
         User user2
-        IdentityFile ~/.ssh/id_ed25519.user2
+        IdentityFile ~/.ssh/user2-github
         IdentitiesOnly yes
         AddKeysToAgent yes
 
